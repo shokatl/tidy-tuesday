@@ -2,6 +2,8 @@ library(tidyverse)
 library(tidytuesdayR)
 library(lubridate)
 library(zoo)
+library(ggtext)
+library(patchwork)
 
 pip <- tt_load("2020-12-01")
 
@@ -32,10 +34,18 @@ ggplot(pup1, mapping = aes(x = occupancy_date, y = occ_7day, color = sector)) +
            label = "Occupancy",
            color = "black") +
   theme_classic() +
+  ggtitle(
+    paste0(
+      "<span style = 'color:#660000'>**How has occupancy changed over time in Toronto homeless shelters?**</span>",
+      "<br><span style = 'color:#660000'><span style = 'font-size:10pt'>and which sectors receive the most support?</span>"
+    )
+  ) +
   theme(plot.background = element_rect(fill = "#F9ECF0"),
+        plot.title = ggtext::element_markdown(),
         panel.background = element_rect(fill = "#F9ECF0"),
-        legend.background = element_rect(fill = "#F9ECF0")) +
+        legend.background = element_rect(fill = "#F9ECF0"),
+        axis.title.x = element_markdown()) +
   labs(x = "Date",
        y = "Occupancy (7-day average)",
-       color = "Sector",
-       title = "Occupancy of shelters in Toronto by sector over time")
+       color = "Sector")
+
