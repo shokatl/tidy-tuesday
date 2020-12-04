@@ -18,7 +18,7 @@ pup1 <- pup %>%
   mutate(occ_7day = rollmean(tot_occ, k = 7, fill = NA),
          cap_7day = rollmean(tot_cap, k = 7, fill = NA))
 
-ggplot(pup1, mapping = aes(x = occupancy_date, y = occ_7day, color = sector)) +
+p <- ggplot(pup1, mapping = aes(x = occupancy_date, y = occ_7day, color = sector)) +
   geom_line(linetype = "solid") + 
   geom_line(mapping = aes(x = occupancy_date, y = cap_7day, color = sector), 
             linetype = "dashed", alpha = 0.5) +
@@ -36,16 +36,20 @@ ggplot(pup1, mapping = aes(x = occupancy_date, y = occ_7day, color = sector)) +
   theme_classic() +
   ggtitle(
     paste0(
-      "<span style = 'color:#660000'>**How has occupancy changed over time in Toronto homeless shelters?**</span>",
-      "<br><span style = 'color:#660000'><span style = 'font-size:10pt'>and which sectors receive the most support?</span>"
+      "<span style = 'color:#660000'><span style = 'font-size:16pt'>**How has occupancy changed over time in Toronto homeless shelters?**</span>",
+      "<br><span style = 'color:#660000'><span style = 'font-size:12pt'>and which sectors receive the most support?</span>"
     )
   ) +
   theme(plot.background = element_rect(fill = "#F9ECF0"),
         plot.title = ggtext::element_markdown(),
         panel.background = element_rect(fill = "#F9ECF0"),
         legend.background = element_rect(fill = "#F9ECF0"),
-        axis.title.x = element_markdown()) +
-  labs(x = "Date",
-       y = "Occupancy (7-day average)",
-       color = "Sector")
+        axis.title.x = element_markdown(),
+        axis.title.y = element_markdown(),
+        legend.title = element_markdown()) +
+  labs(x = paste0("<span style = 'color:#660000'>**Date**</span>"),
+       y = paste0("<span style = 'color:#660000'>**Occupancy (7-day average)**</span>"),
+       color = paste0("<span style = 'color:#660000'>**Sector**</span>"))
+p
 
+ggsave("2020-12-01.png")
