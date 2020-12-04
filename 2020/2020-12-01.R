@@ -52,4 +52,4 @@ p <- ggplot(pup1, mapping = aes(x = occupancy_date, y = occ_7day, color = sector
        color = paste0("<span style = 'color:#660000'>**Sector**</span>"))
 p
 
-ggsave("2020/2020-12-01.png", width = 200, height = 100)
+ggsave("2020/2020-12-01.png", scale = 0.78)
