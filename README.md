@@ -1,4 +1,4 @@
-# Leila's tidy-tuesday plots
+# Leila's tidy tuesday plots
 
 ### December 1, 2020 - Toronto homeless shelters
 
