@@ -12,7 +12,7 @@ pip <- tt_load("2020-11-24")
 
 hikes <- pip$hike_data
 
-#getting length data into a numberical format, saving things like "round-trip" or "out and back" as new var "type"
+#getting variables into a numberical format, saving things like "round-trip" or "out and back" as new var "type"
 hikes1 <- hikes %>%
   separate(length, into = c("length", "type"), sep = ",") %>%
   mutate(length = str_remove_all(length, "[:alpha:]")) %>%
@@ -22,36 +22,22 @@ hikes1 <- hikes %>%
          highpoint = as.numeric(highpoint))%>%
   filter(rating > 4)
 
+#using Google Maps API to pull in latitude and longitude of the hike locations
 place <- hikes1 %>%
   select(name) %>%
   mutate_geocode(name)
 
+#joining the two data frames
 hike_locations <- left_join(place, hikes1) %>%
   drop_na(lat, lon)
 
-hike_map_box <- c(bottom = min(hike_locations$lat), left = min(hike_locations$lon), 
-                  top = max(hike_locations$lat), right = max(hike_locations$lon))
-
-hike_map <- get_stamenmap(hike_map_box, 
-                          maptype = "terrain-background",
-                          zoom = 5)
-hike_map %>% 
-  ggmap()
-
-
-hike_map %>% 
-  ggmap() +
-  geom_point(data = hike_locations, aes(lon, lat,
-                                        size = length,
-                                        color = rating),
-             inherit.aes = FALSE, alpha = 0.5) +
-  theme_void()
-
+#Bringing in hiker icon
 hiker  <- makeIcon(
   iconUrl = "https://openclipart.org/download/11401/johnny-automatic-NPS-map-pictographs-part-95.svg",
   iconWidth = 20, iconHeight = 40)
 hiker
 
+#Setting the labels for the icons when you click on them
 content <- paste("<b>", hike_locations$name, 
                  "</b></br>", "Length:",
                  hike_locations$length,
@@ -60,6 +46,7 @@ content <- paste("<b>", hike_locations$name,
                  "</br>", "Rating:",
                  hike_locations$rating)
 
+#making the interactive map
 leaflet() %>%
   addTiles() %>%
   addMarkers(lng = ~lon, lat = ~lat, 
