@@ -1,7 +1,6 @@
 library(tidyverse)
 library(tidytuesdayR)
 library(lubridate)
-library(zoo)
 library(ggtext)
 library(patchwork)
 library(stringr)
