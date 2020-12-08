@@ -1,5 +1,8 @@
 # Leila's tidy tuesday plots
 
+### November 10, 2020 - Mobile phone subscriptions
+![<br>](2020/2020-11-10.png)
+
 ### November 24, 2020 - Hiking trails
 ![This is an interactive map that shows the locations of hiking trails around the United States. Clicking on a hiker icon shows the name, length, gain in elevation, and rating of the hike. <br>](2020/2020-11-24.png)
 
