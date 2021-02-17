@@ -9,3 +9,13 @@
 ### December 1, 2020 - Toronto homeless shelters
 ![<br>](2020/2020-12-01.png)
 
+### January 26, 2021 - Plastic processing
+
+#### Who cleans up all of the plastic that gets generated?
+![<br>](2021/2021-01-26_1.png)
+
+#### Who produces all of this plastic?
+![<br>](2021/2021-01-26_2.png)
+
+#### Who produces *most* of this plastic?
+![<br>](2021/2021-01-26_3.png)
