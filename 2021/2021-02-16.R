@@ -5,7 +5,6 @@ library(zoo)
 library(ggtext)
 library(patchwork)
 library(viridis)
-library(forcats)
 
 pip <- tt_load("2021-02-16")
 
