@@ -22,5 +22,8 @@
 
 ### February 16, 2021 - Replicating DuBois' data visualizations
 
-#### Plot 1:
-![](2021/du-bois_1.png){width=54%} ![](2021/2021-02-16_1.png){width=45%}
+#### Original plot 1:
+![<br>](2021/du-bois_1.png)
+
+#### My recreation of plot 1:
+![<br>](2021/2021-02-16_1.png)
