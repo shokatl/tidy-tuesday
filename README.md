@@ -19,3 +19,8 @@
 
 #### Who produces *most* of this plastic?
 ![<br>](2021/2021-01-26_3.png)
+
+### February 16, 2021 - Replicating DuBois' data visualizations
+
+#### Plot 1:
+![](2021/du-bois_1.png){width=54%} ![](2021/2021-02-16_1.png){width=45%}

@@ -49,6 +49,3 @@ ggplot(data = georgia_pop, mapping = aes(x = Year, y = Pop, lty = Race)) +
   )
 
 grid.brackets(381.5, 512, 31.5, 512, lwd = 0.5, col="black")
-
-ggsave("2021/2021-02-16.png", scale = 0.78)  
-
