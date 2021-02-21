@@ -6,7 +6,6 @@ library(ggtext)
 library(patchwork)
 library(viridis)
 library(extrafont)
-font_import()
 loadfonts(quiet = TRUE)
 library(grid)
 library(pBrackets) 
@@ -14,6 +13,7 @@ library(pBrackets)
 
 pip <- tt_load("2021-02-16")
 
+### Graph number 1
 georgia_pop <- pip$georgia_pop %>%
   pivot_longer(cols = c(White, Colored), names_to = "Race", values_to = "Pop")
 
@@ -49,3 +49,24 @@ ggplot(data = georgia_pop, mapping = aes(x = Year, y = Pop, lty = Race)) +
   )
 
 grid.brackets(381.5, 512, 31.5, 512, lwd = 0.5, col="black")
+
+### Graph number 2
+conjugal <- pip$conjugal %>%
+  mutate(`WIDOWED AND DIVORCED` = `Divorced and Widowed`) %>%
+  mutate("SINGLE" = Single) %>%
+  mutate("MARRIED" = Married) %>%
+  select(-`Divorced and Widowed`, -`Single`, -`Married`) %>%
+  pivot_longer(col = c(SINGLE, `WIDOWED AND DIVORCED`, MARRIED), 
+               names_to = "condition", values_to = "percent")
+
+ggplot(data = conjugal, mapping = aes(x = Population, y = percent,
+                                      fill = condition)) +
+  geom_col() +
+  coord_flip() +
+  facet_wrap(~Age, ncol = 1) +
+  theme(
+    legend.position = "top"
+  )
+
+
+
